@@ -4,6 +4,7 @@ import { Link } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import RecoveryComponents from './conditioncomponents/RecoveryComponents'
 import VerifyComponents from './conditioncomponents/VerifyComponents';
+import Modal from './conditioncomponents/alertmodel/Modal';
 
 const VerifyPhrase = () => {
 
@@ -15,6 +16,7 @@ const VerifyPhrase = () => {
 
   return (
       <View className="flex flex-1 flex-col items-center">
+          <Modal displayModal={true} />
           <View className="flex flex-col items-center mt-8">
              <Text className="mt-3 font-bold text-3xl ">Your Recovery Phrase</Text>
               <View className=" text-center">
