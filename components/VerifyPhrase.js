@@ -1,22 +1,26 @@
 import { View, Text, Pressable , TouchableOpacity  } from 'react-native'
-import React from 'react';
-import { Link } from 'expo-router';
+import React , {useState} from 'react';
+import { Link , useRouter } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import RecoveryComponents from './conditioncomponents/RecoveryComponents'
 import VerifyComponents from './conditioncomponents/VerifyComponents';
 import Modal from './conditioncomponents/alertmodel/Modal';
 
-const VerifyPhrase = () => {
 
+const VerifyPhrase = () => {
+    const router = useRouter();
+    const [show, setShow] = useState(false);
     const showWord = (word) => {
        console.log(word)
     }
-
-
+const enterAccount = () => {
+    setShow(!show)
+    router.push("/usersAccount")
+}
 
   return (
       <View className="flex flex-1 flex-col items-center">
-          <Modal displayModal={true} />
+           {show && ( <Modal  title={"Transaction Status"} message={"welcome to our page"} modelDisplay={setShow} />)} 
           <View className="flex flex-col items-center mt-8">
              <Text className="mt-3 font-bold text-3xl ">Your Recovery Phrase</Text>
               <View className=" text-center">
@@ -27,23 +31,21 @@ const VerifyPhrase = () => {
                       <RecoveryComponents id={1} word={"children"} />
                       <RecoveryComponents id={2} word={"children"} />
                       <RecoveryComponents id={3} word={"children"} />
-
-
                  </View>
               </View>
-      <View className="w-72 h-6/7 mt-32">
+              <View className="w-72 h-6/7 mt-32">
                   <View className="w-full flex flex-row flex-wrap justify-center py-2">
                       <VerifyComponents word={"children"} wordPressed={(word)=>showWord(word)} />
                       <VerifyComponents word={"man"} wordPressed={(word)=>showWord(word)} />
                       <VerifyComponents word={"mango"} wordPressed={(word)=>showWord(word)} />
                       <VerifyComponents word={"fruit"} wordPressed={(word)=>showWord(word)} />
-    </View>
+              </View>
               </View>
               <View className="w-full h-1/6 flex-1 justify-end pb-12 " >
                   <View  className="flex items-center">                 
                     </View>
-                   <View className="w-96 flex items-center mt-3">
-                       <Link className="w-[360px] h-12 border border-slate-300 rounded-md flex text-center pt-[12px] font-bold text-slate-600  my-2" href={{pathname:"/verifyPhrase"}}><Text>Continue</Text></Link>
+                   <View  className="w-96 flex items-center mt-3">
+                       <TouchableOpacity  onPress={()=>enterAccount()}   className="w-[350px] h-12 border border-slate-300 rounded-md flex text-center pt-[12px] font-bold text-slate-600  my-2" href={{pathname:"/verifyPhrase"}}><Text className="text-center">Continue</Text></TouchableOpacity>
                   </View>
               </View>        
         </View>

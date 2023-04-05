@@ -3,23 +3,27 @@ import React , {useState} from 'react';
 import { Link } from 'expo-router';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const Modal = ({ title, message, imageURL , displayModal}) => {
-    const [isShown, setIsShown] = useState(displayModal);
+const Modal = ({ title, message, imageURL , modelDisplay }) => {
+    const [isShown, setIsShown] = useState(true);
+    const hideModal = () => {
+        setIsShown(false);
+        modelDisplay(false)
+}
   return (
-    <Pressable onPress={()=>setIsShown(false)} style={styles.background}  className={`flex flex-1 absolute w-full h-full z-10 ${isShown? ``: `hidden`} `}>
+    <Pressable onPress={()=>hideModal()} style={styles.background}  className={`flex flex-1 absolute w-full h-full z-10 ${isShown? ``: `hidden`} `}>
      <View className="flex flex-1 justify-center items-center relative">
-              <View className="w-4/5 h-auto bg-white z-50 rounded-lg shadow shadow-2xl ">
+              <View className="w-4/5 h-auto bg-white z-50 rounded-lg ">
                   <View className="w-auto flex justify-end  items-end relative"><Text className="min-w-0 p-1"><Icon name="closecircle" color={"#e28743"} size={22} /></Text></View>
                
                   {title && <View className="border-b border-b-slate-300 flex justify-center items-center ">
                      <Text className="mb-2 text-lg font-medium">{ title}</Text> 
                   </View>} 
-                  {(imageURL) ? 
-                      <View className="min-h-[100] flex flex-col h-auto justify-center items-center">
-                     
-                        <View className="border my-3 rounded-lg">
-                           <Image source={imageURL} className="object-cover h-32 w-32 " />
-                        </View>
+                  {(message) ? 
+                      <View className="min-h-fit flex flex-col  justify-center items-center">
+                      {imageURL && <View className="border my-3 rounded-lg">
+                              <Image source={imageURL} className="object-cover h-32 w-32 " />
+                          </View>
+                          }
                    <Text className="w-2/3 flex text-lg  text-center py-5  text-md font-semibold text-slate-700 opacity-60">{message}</Text>
                   </View>
                       : ""}   

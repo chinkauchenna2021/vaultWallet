@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import RecoveryComponents from './conditioncomponents/RecoveryComponents'
 
 const RecoveryPhrase = () => { 
-
     const copiedToClipboard = () => { console.log("copied to clipboard") };
 
   return (
@@ -30,16 +29,16 @@ const RecoveryPhrase = () => {
               </View>
               <View className="w-full h-1/6 flex-1 justify-end pb-12 " >
                   <View  className="flex items-center">                 
-                      <View className="w-[360px] h-28 bg-red-200 opacity-40 flex flex-col rounded-md -circle">
+                      <View className="w-[350px] h-28 bg-red-200 opacity-40 flex flex-col rounded-md -circle">
                           <View className="flex justify-center items-center py-2"><Text><Icon name="info-circle" color={"#e28743"} size={25} /></Text></View>
                         <View className="">
-                         <Text className=" text-red-700  text-center text-lg font-extrabold ">Never share recovery phrase with anyone store it securely!</Text>     
+                         <Text className=" text-red-700  text-center text-md font-extrabold ">Never share recovery phrase with anyone store it securely!</Text>     
                        </View>
                   </View>
 
                     </View>
                    <View className="w-96 flex items-center mt-3">
-                       <Link className="w-[360px] h-12 bg-[#e28743] rounded-md flex text-center pt-[12px] font-bold text-white my-2" href={{pathname:"/verifyPhrase"}}><Text>Continue</Text></Link>
+                       <Link className="w-[350px] h-12 bg-[#e28743] rounded-md flex text-center pt-[12px] font-bold text-white my-2" href={{pathname:"/verifyPhrase"}}><Text>Continue</Text></Link>
                   </View>
               </View>        
         </View>
